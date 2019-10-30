@@ -24,7 +24,6 @@ const htmlPlugin = function() {
 }
 
 const pages = htmlPlugin();
-console.log(pages, 'pages');
 
 const projectname = process.argv[3]; // 获取执行哪个文件
 let page = {};
