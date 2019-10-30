@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:index": "vue-cli-service build index",
+    "build:second": "vue-cli-service build second",
+    "build": "npm run build:index && npm run build:second",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

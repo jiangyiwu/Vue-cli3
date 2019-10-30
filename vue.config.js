@@ -26,13 +26,21 @@ const htmlPlugin = function() {
 const pages = htmlPlugin();
 console.log(pages, 'pages');
 
+const projectname = process.argv[3]; // 获取执行哪个文件
+let page = {};
+if (process.env.NODE_ENV == 'development') {
+  page = pages
+} else {
+  page[projectname] = pages[projectname]
+}
+
 module.exports = {
   // chainWebpack: config => {
   //   console.log(config.module, '0-0-0-');
   // },
   publicPath: './',
-  outputDir: 'dist',
-  pages : pages,
+  outputDir: 'dist' + projectname,
+  pages : page,
   productionSourceMap: false,// 生产环境 sourceMap
   devServer: {
     port: 1900,
