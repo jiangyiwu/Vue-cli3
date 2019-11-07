@@ -1,0 +1,69 @@
+$componentName: 'live-cata-tree';
+$liBg: #e3f2fd;
+.#{$componentName} {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  li {
+    >div {
+      border-bottom: solid 1px #e0e0e0;
+      line-height: 36px;
+      font-size: 13px;
+      color: $fontColor;
+      user-select: none;
+      &:hover {
+        color: $color;
+      }
+    }
+    &:nth-child(even) {
+      >div {
+        background-color: #fafafa;
+      }
+    }
+    &:nth-child(odd) {
+      >div {
+        background-color: #fff;
+      }
+    }
+
+    &.selected {
+      >div {
+        background-color: $liBg;
+      }
+    }
+    &.opened {
+      >ul {
+        display: block;
+      }
+      >div >i {
+        transform: rotate(0deg);
+        transition: transform .1s ease;
+      }
+    }
+
+    >ul {
+      display: none;
+    }
+  }
+
+  i {
+    font-style: normal;
+    cursor: pointer;
+    width: 20px;
+    height: 36px;
+    display: inline-block;
+    vertical-align: top;
+    &.clickable {
+      background: url(../images/icon-dropdown.png) no-repeat;
+      background-position: center;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &-indent {
+    display: inline-block;
+    width: 15px;
+    height: 100%;
+  }
+}

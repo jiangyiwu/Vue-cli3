@@ -1,0 +1,66 @@
+//渐变色
+@mixin linear($startcolor,$endcolor) {
+  background: -prefix-linear-zgradient(top, $startcolor, $endcolor);
+  background: linear-gradient(to bottom, $startcolor, $endcolor);
+}
+
+@mixin linear-col($startcolor,$endcolor) {
+  background: mix($startcolor,$endcolor);
+  background: -webkit-linear-gradient(top, $startcolor 0%,$endcolor 100%);
+  background: -ms-linear-gradient(top, $startcolor 0%,$endcolor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=$startcolor,endcolorstr=$endcolor,gradientType=0);
+  background: -webkit-linear-gradient(top, $startcolor, $endcolor);
+  background: linear-gradient(to bottom, $startcolor, $endcolor);
+}
+
+// 小三角
+
+@mixin arrow( $height:5px, $color:#414141, $orientation: left) {
+  width: 0 !important;
+  height: 0 !important;
+  display: inline-block;
+  border: $height solid transparent;
+  @if $orientation == left {
+    border-right: $height solid $color;
+    border-width: $height $height $height 0;
+  } @else if $orientation == right {
+    border-left: $height solid $color;
+    border-width: $height 0 $height $height;
+  } @else if $orientation == top {
+    border-bottom: $height solid $color;
+    border-width: 0 $height $height $height;
+  } @else {
+    border-top: $height solid $color;
+    border-width: $height $height 0 $height;
+  }
+}
+
+@mixin h3Title() {
+  color: $titleColor;
+  font-size: 14px;
+  line-height: 16px;
+  border-left: 4px solid #90a4ae;
+  font-weight: normal;
+  text-indent: 10px;
+}
+
+/*
+* 定义等比例容器
+* @param {Number} $width 宽
+* @param {Number} $heught 高
+*/
+@mixin ratioBox($width, $height) {
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  &>div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.8);
+  }
+}

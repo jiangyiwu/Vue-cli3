@@ -41,6 +41,26 @@ module.exports = {
   outputDir: 'dist' + projectname,
   pages : page,
   productionSourceMap: false,// 生产环境 sourceMap
+  chainWebpack: config => {
+    const oneOfsMap = config.module.rule('scss').oneOfs.store
+    oneOfsMap.forEach(item => {
+      item
+        .use('sass-resources-loader')
+        .loader('sass-resources-loader')
+        .options({
+          resources: './src/pages/index/assets/style/main.scss',
+        })
+        .end()
+    })
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .loader('vue-loader')
+      .tap(options => {
+        options.compilerOptions.preserveWhitespace = true;
+        return options;
+      })
+  },
   devServer: {
     port: 1900,
     host: 'localhost',

@@ -1,0 +1,53 @@
+@import './variables.scss';
+@import "./mixins";
+
+blockquote,body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,li,ol,p,pre,td,textarea,th,ul {
+	padding: 0;
+	margin: 0
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  border: 0;
+  // vertical-align: middle;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+	color: $color;
+}
+
+ul {
+	list-style: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+  font-family: helvetica neue,hiragino sans gb,tahoma,microsoft yahei ui,microsoft yahei,simsun,"sans-serif";
+  font-size: 13px;
+  color: #546e7a;
+  line-height: 1;
+	min-width: 1190px;
+  height: 100%;
+  
+  .container {
+    width: 1190px;
+    margin: 0 auto;
+
+    @media (min-width:1600px) {
+      width: 1390px;
+    }
+  }
+}
